@@ -1,0 +1,121 @@
+/* --- Zmienne globalne i resetowanie stylów --- */
+:root {
+    --dark-bg: #121212;
+    --dark-secondary: #1e1e1e;
+    --orange-accent: #ff6600;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background-color: var(--dark-bg); color: var(--text-color); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- Nawigacja --- */
+#navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(18, 18, 18, 0.8); backdrop-filter: blur(10px); z-index: 1000; transition: background-color 0.3s ease; border-bottom: 1px solid transparent; }
+#navbar.scrolled { background-color: var(--dark-bg); border-bottom: 1px solid var(--border-color); }
+#navbar .container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.logo { font-size: 1.8rem; font-weight: 700; color: var(--text-color); text-decoration: none; transition: color 0.3s ease; }
+.logo:hover { color: var(--orange-accent); }
+#navbar nav ul { list-style: none; display: flex; }
+#navbar nav ul li { margin-left: 30px; }
+#navbar nav ul li a { color: var(--text-color); text-decoration: none; font-weight: 600; position: relative; padding: 5px 0; transition: color 0.3s ease; }
+#navbar nav ul li a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: var(--orange-accent); transition: width 0.3s ease; }
+#navbar nav ul li a:hover, #navbar nav ul li a.active { color: var(--orange-accent); }
+#navbar nav ul li a:hover::after, #navbar nav ul li a.active::after { width: 100%; }
+
+/* --- Sekcja Główna (Hero) --- */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; color: #fff; background: url('https://images.unsplash.com/photo-1616147926838-8924f7e2c90c?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover; }
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 1)); }
+.hero-content { position: relative; z-index: 2; }
+.animated-text { font-size: 5rem; font-weight: 700; margin-bottom: 1rem; animation: fadeInDown 1s ease-out; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); }
+.orange-text { color: var(--orange-accent); }
+.subtitle { font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem auto; animation: fadeInUp 1s ease-out 0.5s; animation-fill-mode: backwards; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); }
+.server-info { margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.8s; animation-fill-mode: backwards; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.server-info p { margin: 0; font-size: 1.1rem; font-weight: 600; background-color: rgba(30, 30, 30, 0.7); border: 1px solid var(--orange-accent); border-radius: 5px; padding: 10px 20px; color: #fff; display: flex; align-items: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, background-color 0.3s ease; }
+.server-info p:hover { transform: translateY(-3px); background-color: rgba(30, 30, 30, 0.9); }
+.server-info p strong { color: var(--orange-accent); margin-right: 8px; }
+.server-info a { color: #fff; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+.server-info a:hover { color: var(--orange-accent); }
+.copy-icon { cursor: pointer; margin-left: 10px; color: var(--orange-accent); transition: color 0.3s; }
+.copy-icon:hover { color: #fff; }
+
+/* --- Przyciski --- */
+.btn { display: inline-block; background-color: var(--orange-accent); color: #fff; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: transform 0.3s ease, background-color 0.3s ease; border: none; cursor: pointer; font-size: 1rem; }
+.btn:hover { transform: translateY(-3px); background-color: #e65c00; }
+
+/* --- Sekcje z treścią --- */
+.content-section { padding: 80px 0; background-color: var(--dark-secondary); }
+.content-section:nth-child(odd) { background-color: var(--dark-bg); }
+.content-section h2 { font-size: 2.5rem; text-align: center; margin-bottom: 60px; position: relative; color: var(--orange-accent); }
+.content-section h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--text-color); }
+
+/* --- Regulamin --- */
+.subpage-body { padding-top: 70px; }
+.subpage-main { min-height: calc(100vh - 70px - 80px); }
+.rules-list { max-width: 900px; margin: 0 auto; background-color: var(--dark-bg); padding: 30px; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); }
+.rules-list ol { list-style: none; counter-reset: rules-counter; }
+.rules-list li { background-color: var(--dark-secondary); border-left: 4px solid var(--orange-accent); padding: 20px 20px 20px 60px; margin-bottom: 15px; border-radius: 5px; counter-increment: rules-counter; position: relative; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.rules-list li:hover { transform: translateX(5px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+.rules-list li::before { content: counter(rules-counter); position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--orange-accent); font-weight: 700; font-size: 1.8rem; opacity: 0.8; }
+.rules-list li strong { color: var(--orange-accent); }
+
+/* --- O nas --- */
+.about-content { display: flex; align-items: center; gap: 40px; max-width: 1000px; margin: 0 auto; }
+.about-text { flex: 2; }
+.about-text p { margin-bottom: 15px; font-size: 1.1rem; color: var(--text-secondary); }
+.about-text strong { color: var(--orange-accent); }
+.about-image { flex: 1; min-width: 300px; }
+.about-image img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); }
+
+/* --- NOWE STYLE DLA SEKCJI 'JAK ZACZĄĆ' --- */
+.start-steps { display: flex; justify-content: center; gap: 30px; text-align: center; flex-wrap: wrap; }
+.step-box { background-color: var(--dark-bg); padding: 30px; border-radius: 10px; border-bottom: 3px solid var(--orange-accent); flex: 1; min-width: 280px; max-width: 350px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.step-box:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); }
+.step-icon { font-size: 3rem; color: var(--orange-accent); margin-bottom: 15px; }
+.step-box h3 { margin-bottom: 10px; font-size: 1.5rem; }
+.step-box p { color: var(--text-secondary); }
+
+/* --- NOWE STYLE DLA GALERII Z LIGHTBOXEM --- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+.gallery-grid a { display: block; overflow: hidden; border-radius: 8px; position: relative; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+.gallery-grid img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.4s ease, filter 0.4s ease; }
+.gallery-grid a::after { content: '🔍'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); color: white; font-size: 3rem; background-color: rgba(0, 0, 0, 0.6); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.4s ease, opacity 0.4s ease; opacity: 0; }
+.gallery-grid a:hover img { transform: scale(1.1); filter: brightness(0.7); }
+.gallery-grid a:hover::after { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+/* Dostosowanie wyglądu Fancybox */
+.fancybox__caption { font-family: 'Poppins', sans-serif; }
+
+/* --- Kontakt --- */
+.contact-wrapper { display: flex; gap: 40px; margin-top: 40px; }
+#contact-form { flex: 2; display: flex; flex-direction: column; }
+#contact-form input, #contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; background-color: var(--dark-bg); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-color); font-family: 'Poppins', sans-serif; }
+#contact-form input:focus, #contact-form textarea:focus { outline: none; border-color: var(--orange-accent); }
+.social-links { flex: 1; }
+.social-links h3 { margin-bottom: 15px; color: var(--orange-accent); }
+.social-links a { display: block; color: var(--text-color); text-decoration: none; margin-bottom: 10px; font-size: 1.1rem; transition: color 0.3s ease; }
+.social-links a i { margin-right: 10px; width: 20px; color: var(--orange-accent); }
+.social-links a:hover { color: var(--orange-accent); }
+
+/* --- Stopka --- */
+footer { background-color: var(--dark-bg); padding: 20px 0; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
+
+/* --- Animacje --- */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- Responsywność --- */
+@media (max-width: 992px) { .about-content { flex-direction: column; text-align: center; } .about-image { min-width: unset; width: 80%; } }
+@media (max-width: 768px) {
+    #navbar .container { flex-direction: column; height: auto; padding: 10px 0; }
+    #navbar nav ul { flex-direction: column; text-align: center; width: 100%; margin-top: 10px; }
+    #navbar nav ul li { margin: 5px 0; }
+    .animated-text { font-size: 3.5rem; }
+    .contact-wrapper { flex-direction: column; }
+    .content-section h2 { font-size: 2rem; }
+}
+@media (max-width: 480px) { .animated-text { font-size: 2.5rem; } .subtitle { font-size: 1rem; } }
