@@ -17,6 +17,11 @@
         width: 100px;
     }
 }
+.logo span {
+    font-size: 22px;          /* rozmiar czcionki */
+    font-weight: bold;        /* pogrubienie */
+    color: #fff;              /* kolor napisu (np. biały) */
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -130,5 +135,6 @@ footer { background-color: var(--dark-bg); padding: 20px 0; text-align: center; 
 }
 
 @media (max-width: 480px) { .animated-text { font-size: 2.5rem; } .subtitle { font-size: 1rem; } }
+
 
 
