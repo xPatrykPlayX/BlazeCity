@@ -7,6 +7,16 @@
     --text-secondary: #a0a0a0;
     --border-color: #333333;
 }
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .logo img {
+        width: 100px;
+    }
+}
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -120,4 +130,5 @@ footer { background-color: var(--dark-bg); padding: 20px 0; text-align: center; 
 }
 
 @media (max-width: 480px) { .animated-text { font-size: 2.5rem; } .subtitle { font-size: 1rem; } }
+
 
